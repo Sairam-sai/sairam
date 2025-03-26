@@ -47,9 +47,8 @@
 </head>
 <body>
     <div class="video-container">
-        <video id="introVideo" autoplay muted playsinline>
-           <source src="videos/vintro.mp4" type="video/mp4">
-
+        <video id="vintro" autoplay muted playsinline>
+            <source src="videos/vintro.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <button class="mute-btn" id="muteBtn" onclick="toggleMute()">🔊 Unmute</button>
@@ -57,7 +56,7 @@
     </div>
     
     <script>
-        let video = document.getElementById("introVideo");
+        let video = document.getElementById("vintro");
         let skipBtn = document.getElementById("skipBtn");
         let muteBtn = document.getElementById("muteBtn");
 
@@ -71,7 +70,12 @@
             skipBtn.style.display = "block";
         }, 5000);
 
-        // Automatically redirect after video ends
+        // Ensure video is loaded
+        video.addEventListener("canplaythrough", function() {
+            console.log("Video is ready to play.");
+        });
+
+        // Redirect after video ends
         video.addEventListener("ended", function() {
             window.location.href = "welcome.html";
         });
