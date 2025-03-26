@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receive Food</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url("https://img.freepik.com/free-photo/front-view-donation-box-with-food_23-2148613207.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* background: linear-gradient(to right, #ff7eb3, #ff758c); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .container {
+            text-align: center;
+            background:rgba(255, 255,255,0.2);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+            width: 500px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1 {
+            color: #333;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        body.fade-in {
+            opacity: 1;
+        }
+        body.fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Receive Food</h1>
+        <form id="receiveForm" onsubmit="return validateReceiveForm()">
+            <input type="text" id="location" placeholder="Location">
+            <div id="locationError" class="error"></div>
+            <input type="text" id="orphanage" placeholder="Orphanage/Home Name">
+            <div id="orphanageError" class="error"></div>
+            <input type="tel" id="phone" placeholder="Phone Number">
+            <div id="phoneError" class="error"></div>
+            <input type="email" id="email" placeholder="Email">
+            <div id="emailError" class="error"></div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.add("fade-in");
+        });
+        
+        function validateReceiveForm() {
+            let valid = true;
+            document.getElementById("locationError").innerText = "";
+            document.getElementById("orphanageError").innerText = "";
+            document.getElementById("phoneError").innerText = "";
+            document.getElementById("emailError").innerText = "";
+            
+            let location = document.getElementById("location").value;
+            let orphanage = document.getElementById("orphanage").value;
+            let phone = document.getElementById("phone").value;
+            let email = document.getElementById("email").value;
+            
+            if (location.trim() === "") {
+                document.getElementById("locationError").innerText = "Location is required";
+                valid = false;
+            }
+            if (orphanage.trim() === "") {
+                document.getElementById("orphanageError").innerText = "Orphanage/Home Name is required";
+                valid = false;
+            }
+            if (!phone.match(/^\d{10}$/)) {
+                document.getElementById("phoneError").innerText = "Phone number must be 10 digits";
+                valid = false;
+            }
+            if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                document.getElementById("emailError").innerText = "Invalid email format";
+                valid = false;
+            }
+            
+            if (valid) {
+                document.body.classList.add("fade-out");
+                setTimeout(() => {
+                    window.location.href = "select_restaurant.html";
+                }, 500);
+            }
+            
+            return false;
+        }
+    </script>
+</body>
+</html>

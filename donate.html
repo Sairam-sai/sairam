@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Food</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("https://media.istockphoto.com/id/1060352206/photo/donate-food-to-hungry-people-concept-of-poverty-and-hunger.jpg?s=612x612&w=0&k=20&c=BB37IPajPeKo8fsJ3m7z2TOUmCbD0nnJo79ZXBg89sM=");
+            /* background: linear-gradient(to right, #ff9966, #ff5e62); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+            width: 500px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+        
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        body.fade-in {
+            opacity: 1;
+        }
+        
+        body.fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Donate Food</h1>
+        <form id="donateForm" onsubmit="return validateDonateForm()">
+            <input type="text" id="location" placeholder="Location">
+            <div id="locationError" class="error"></div>
+            <input type="number" id="people" placeholder="Number of People">
+            <div id="peopleError" class="error"></div>
+            <input type="tel" id="phone" placeholder="Phone Number">
+            <div id="phoneError" class="error"></div>
+            <input type="email" id="email" placeholder="Email">
+            <div id="emailError" class="error"></div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.add("fade-in");
+        });
+        
+        function validateDonateForm() {
+            let valid = true;
+            document.getElementById("locationError").innerText = "";
+            document.getElementById("peopleError").innerText = "";
+            document.getElementById("phoneError").innerText = "";
+            document.getElementById("emailError").innerText = "";
+            
+            let location = document.getElementById("location").value;
+            let people = document.getElementById("people").value;
+            let phone = document.getElementById("phone").value;
+            let email = document.getElementById("email").value;
+            
+            if (location.trim() === "") {
+                document.getElementById("locationError").innerText = "Location is required";
+                valid = false;
+            }
+            if (people <= 0) {
+                document.getElementById("peopleError").innerText = "Enter a valid number of people";
+                valid = false;
+            }
+            if (!phone.match(/^\d{10}$/)) {
+                document.getElementById("phoneError").innerText = "Phone number must be 10 digits";
+                valid = false;
+            }
+            if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                document.getElementById("emailError").innerText = "Invalid email format";
+                valid = false;
+            }
+            
+            if (valid) {
+                document.body.classList.add("fade-out");
+                setTimeout(() => {
+                    window.location.href = "thankyou.html";
+                }, 500);
+            }
+            
+            return false;
+        }
+    </script>
+</body>
+</html>
