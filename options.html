@@ -26,7 +26,7 @@
             transition: opacity 0.5s ease-in-out;
         }
 
-        /* Dark Overlay - Ensures content is visible */
+        /* Dark Overlay */
         body::before {
             content: "";
             position: fixed;
@@ -35,12 +35,12 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            z-index: -1; /* Keep it behind everything */
+            z-index: -1;
         }
 
         .container {
             position: relative;
-            z-index: 1000; /* Keeps buttons visible */
+            z-index: 1000;
             text-align: center;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
@@ -97,69 +97,6 @@
             transform: scale(1.1);
         }
 
-        /* Chatbot Styles */
-       /* Chatbot Styles - Reduced Size */
-#chatbot {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    width: 250px;  /* Reduced width */
-    height: 350px;  /* Reduced height */
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 1000; /* Keeps chatbot visible */
-}
-
-#chatbot-header {
-    background: #007bff;
-    color: white;
-    padding: 8px;
-    text-align: center;
-    font-size: 16px; /* Adjusted font */
-    font-weight: bold;
-}
-
-#chatbot-messages {
-    flex: 1;
-    padding: 8px;
-    overflow-y: auto;
-    font-size: 14px;
-}
-
-#chatbot-input {
-    display: flex;
-    padding: 8px;
-    border-top: 1px solid #ccc;
-}
-
-#chatbot-input input {
-    flex: 1;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-#chatbot-input button {
-    margin-left: 5px;
-    padding: 6px 10px;
-    border: none;
-    background: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-#chatbot-input button:hover {
-    background: #0056b3;
-}
-
-
         /* Page Fade-in */
         @keyframes fadeIn {
             from {
@@ -189,16 +126,6 @@
         <a href="login.html" class="back-btn" onclick="navigate(event, 'login.html')">Back to Login</a>
     </div>
 
-    <!-- Chatbot -->
-    <div id="chatbot">
-        <div id="chatbot-header">Chatbot</div>
-        <div id="chatbot-messages"></div>
-        <div id="chatbot-input">
-            <input type="text" id="user-input" placeholder="Type a message...">
-            <button onclick="sendMessage()">Send</button>
-        </div>
-    </div>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.body.classList.add("fade-in");
@@ -211,33 +138,20 @@
                 window.location.href = url;
             }, 500);
         }
-
-        function sendMessage() {
-            const input = document.getElementById("user-input");
-            const message = input.value.trim();
-            if (message === "") return;
-
-            const chatMessages = document.getElementById("chatbot-messages");
-
-            // Add user message
-            const userMessage = document.createElement("div");
-            userMessage.textContent = "You: " + message;
-            userMessage.style.textAlign = "right";
-            userMessage.style.padding = "5px";
-            chatMessages.appendChild(userMessage);
-
-            // Auto-reply (Basic bot)
-            setTimeout(() => {
-                const botMessage = document.createElement("div");
-                botMessage.textContent = "Bot: I'm here to help!";
-                botMessage.style.textAlign = "left";
-                botMessage.style.padding = "5px";
-                chatMessages.appendChild(botMessage);
-            }, 500);
-
-            input.value = "";
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
     </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function(){
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/67ecfc26e2478f1919178b45/1inqrhtv9';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html>
