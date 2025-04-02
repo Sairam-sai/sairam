@@ -7,7 +7,10 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #ff9966, #ff5e62);
+            background-image: url("https://etimg.etb2bimg.com/photo/109361217.cms");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,28 +19,30 @@
         }
         .container {
             text-align: center;
-            background: white;
+            background: rgba(255, 255, 255, 0.1); /* Light transparent white */
+            backdrop-filter: blur(15px); /* Strong blur effect */
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
             width: 500px;
+            color: white;
         }
         h1 {
-            color: #333;
             font-size: 30px;
             margin-bottom: 20px;
         }
         .restaurant-option {
             padding: 15px;
             margin: 10px 0;
-            background: #f4f4f4;
+            background: rgba(255, 255, 255, 0.3); /* Glass-like background */
             border-radius: 10px;
             font-size: 18px;
             cursor: pointer;
             transition: all 0.3s;
+            color: white;
         }
         .restaurant-option:hover {
-            background: #ddd;
+            background: rgba(255, 255, 255, 0.5);
             transform: scale(1.05);
         }
         button {
@@ -50,6 +55,7 @@
             cursor: pointer;
             margin-top: 15px;
             transition: all 0.3s;
+            display: none;
         }
         button:hover {
             background: #218838;
@@ -65,15 +71,16 @@
             <div class="restaurant-option" onclick="selectRestaurant('Golden Spoon')">🥘 Golden Spoon</div>
             <div class="restaurant-option" onclick="selectRestaurant('Spicy Delights')">🌶 Spicy Delights</div>
         </div>
-        <button id="confirmBtn" onclick="confirmSelection()" style="display: none;">Confirm</button>
+        <button id="confirmBtn" onclick="confirmSelection()">Confirm</button>
     </div>
+    
     <script>
         let selectedRestaurant = "";
 
         function selectRestaurant(name) {
             selectedRestaurant = name;
             document.querySelectorAll(".restaurant-option").forEach(option => {
-                option.style.background = "#f4f4f4";
+                option.style.background = "rgba(255, 255, 255, 0.3)";
                 option.style.transform = "scale(1)";
             });
 
@@ -89,5 +96,19 @@
             }
         }
     </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/67ecfc26e2478f1919178b45/1inqrhtv9';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html>
