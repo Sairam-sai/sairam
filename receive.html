@@ -7,10 +7,10 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-image: url("https://img.freepik.com/free-photo/front-view-donation-box-with-food_23-2148613207.jpg");
+            background-image: url("https://t3.ftcdn.net/jpg/02/48/92/96/360_F_248929619_JkVBYroM1rSrshWJemrcjriggudHMUhV.jpg");
             background-repeat: no-repeat;
             background-size: cover;
-            /* background: linear-gradient(to right, #ff7eb3, #ff758c); */
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,15 +21,16 @@
         }
         .container {
             text-align: center;
-            background:rgba(255, 255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px); /* Blurred glass effect */
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
             width: 500px;
             animation: fadeIn 1.5s ease-in-out;
+            color: white;
         }
         h1 {
-            color: #333;
             font-size: 30px;
             margin-bottom: 20px;
         }
@@ -37,9 +38,15 @@
             width: 100%;
             padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
+            border: none;
             border-radius: 8px;
             font-size: 16px;
+            background: rgba(255, 255, 255, 0.5);
+            color: black;
+            outline: none;
+        }
+        input::placeholder {
+            color: black;
         }
         button {
             background: #007bff;
@@ -93,23 +100,24 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.body.classList.add("fade-in");
         });
-        
+
         function validateReceiveForm() {
             let valid = true;
             document.getElementById("locationError").innerText = "";
             document.getElementById("orphanageError").innerText = "";
             document.getElementById("phoneError").innerText = "";
             document.getElementById("emailError").innerText = "";
-            
+
             let location = document.getElementById("location").value;
             let orphanage = document.getElementById("orphanage").value;
             let phone = document.getElementById("phone").value;
             let email = document.getElementById("email").value;
-            
+
             if (location.trim() === "") {
                 document.getElementById("locationError").innerText = "Location is required";
                 valid = false;
@@ -126,16 +134,30 @@
                 document.getElementById("emailError").innerText = "Invalid email format";
                 valid = false;
             }
-            
+
             if (valid) {
                 document.body.classList.add("fade-out");
                 setTimeout(() => {
                     window.location.href = "select_restaurant.html";
                 }, 500);
             }
-            
+
             return false;
         }
     </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/67ecfc26e2478f1919178b45/1inqrhtv9';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html>
