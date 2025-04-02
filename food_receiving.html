@@ -7,7 +7,10 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #66ff99, #33cc66);
+            background-image: url("https://media.istockphoto.com/id/1498170916/photo/a-couple-is-taking-a-bag-of-food-at-the-food-and-clothes-bank.jpg?s=612x612&w=0&k=20&c=0fnD_g46lvoZ5NdzX5zYOSM4PzM95ezfs5uMe9D1QKs=");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,11 +19,12 @@
         }
         .container {
             text-align: center;
-            background: white;
+            background: rgba(255, 255, 255, 0.8);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
             width: 500px;
+            backdrop-filter: blur(10px);
         }
         h1 {
             color: #333;
@@ -38,8 +42,23 @@
         <h1>🎉 Your food is on the way! 🎉</h1>
         <p>Food is being delivered from: <strong id="selectedRestaurant"></strong></p>
     </div>
+
     <script>
-        document.getElementById("selectedRestaurant").innerText = localStorage.getItem("selectedRestaurant");
+        document.getElementById("selectedRestaurant").innerText = localStorage.getItem("selectedRestaurant") || "an unknown source";
     </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/67ecfc26e2478f1919178b45/1inqrhtv9';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html>
